@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SearchLibrary
+namespace FastSearchLibrary
 {
     class DirectoryCancellationDelegateSearcher : DirectoryCancellationSearcherBase
     {

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SearchLibrary
+namespace FastSearchLibrary
 {
     /// <summary>
     /// Represents a class for fast directory searching.
