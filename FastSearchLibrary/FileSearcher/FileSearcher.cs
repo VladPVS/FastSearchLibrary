@@ -22,7 +22,7 @@ namespace FastSearchLibrary
         private CancellationTokenSource tokenSource;
 
         /// <summary>
-        /// Event fires when next portion of files is founded. Event handlers is not thread safe. 
+        /// Event fires when next portion of files is found. Event handlers is not thread safe. 
         /// </summary>
         public event EventHandler<FileEventArgs> FilesFound
         {
