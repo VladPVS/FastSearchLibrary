@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace FastSearchLibrary
 {
     /// <summary>
-    /// Determines where execute event handlers.
+    /// Determines where event handlers execute.
     /// </summary>
     public enum ExecuteHandlers
     {
