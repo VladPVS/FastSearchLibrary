@@ -7,6 +7,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+
+/// <summary>
+/// The FastSearchLibrary provides classes to fast files and directories seacrh. 
+/// </summary>
 namespace FastSearchLibrary
 {
     /// <summary>

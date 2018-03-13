@@ -11,7 +11,14 @@ namespace FastSearchLibrary
     /// </summary>
     public enum ExecuteHandlers
     {
+        /// <summary>
+        /// To execute event handlers in current thread. 
+        /// </summary>
         InCurrentThread = 0,
+
+        /// <summary>
+        /// To execute event handlers in some thread from thread pool.
+        /// </summary>
         InThreadPool = 1
     }
 }
