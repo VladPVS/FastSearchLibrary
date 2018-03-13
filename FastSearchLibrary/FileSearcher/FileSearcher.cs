@@ -41,7 +41,7 @@ namespace FastSearchLibrary
         /// <summary>
         /// Event fires when search process is completed or stopped. Event handlers is not thread safe.
         /// </summary>
-        public event EventHandler<SearchEventArgs> SearchCompleted
+        public event EventHandler<SearchCompletedEventArgs> SearchCompleted
         {
             add
             {

@@ -32,7 +32,7 @@ namespace FastSearchLibrary
 
         public event EventHandler<FileEventArgs> FilesFound;
 
-        public event EventHandler<SearchEventArgs> SearchCompleted;
+        public event EventHandler<SearchCompletedEventArgs> SearchCompleted;
 
 
 
@@ -89,11 +89,11 @@ namespace FastSearchLibrary
 
         protected virtual void CallSearchCompleted(bool isCanceled)
         {
-            EventHandler<SearchEventArgs> handler = SearchCompleted;
+            EventHandler<SearchCompletedEventArgs> handler = SearchCompleted;
 
             if (handler != null)
             {
-                var arg = new SearchEventArgs(isCanceled);
+                var arg = new SearchCompletedEventArgs(isCanceled);
 
                 SearchCompleted(this, arg);
             }
