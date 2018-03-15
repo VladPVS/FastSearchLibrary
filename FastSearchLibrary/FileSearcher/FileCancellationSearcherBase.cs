@@ -47,7 +47,7 @@ namespace FastSearchLibrary
         {
             var arg = new FileEventArgs(files);
 
-            if (handlerOption == ExecuteHandlers.InThreadPool)
+            if (handlerOption == ExecuteHandlers.InNewTask)
                 taskHandlers.Add(Task.Run(() => CallFilesFound(files), token));
             else
                 CallFilesFound(files);
@@ -56,7 +56,7 @@ namespace FastSearchLibrary
 
         protected override void OnSearchCompleted(bool isCanceled)
         {
-            if (handlerOption == ExecuteHandlers.InThreadPool)
+            if (handlerOption == ExecuteHandlers.InNewTask)
             {
                 try
                 {

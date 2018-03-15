@@ -11,7 +11,7 @@ namespace FastSearchLibrary
 {
 
     /// <summary>
-    /// Represents a class for fast file searching.
+    /// Represents a class for fast file search.
     /// </summary>
     public class FileSearcher
     {
@@ -62,7 +62,7 @@ namespace FastSearchLibrary
         /// </summary>
         /// <param name="folder">The start search directory.</param>
         /// <param name="pattern">The search pattern.</param>
-        /// <param name="handlerOption">Determines where execute FilesFound event handlers.</param>
+        /// <param name="handlerOption">Specifies where FilesFound event handlers are executed.</param>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         public FileSearcher(string folder, string pattern, ExecuteHandlers handlerOption)
@@ -82,7 +82,7 @@ namespace FastSearchLibrary
         /// <param name="pattern">The search pattern.</param>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
-        public FileSearcher(string folder, string pattern) : this(folder, pattern, ExecuteHandlers.InCurrentThread)
+        public FileSearcher(string folder, string pattern) : this(folder, pattern, ExecuteHandlers.InCurrentTask)
         {
         }
 
@@ -93,7 +93,7 @@ namespace FastSearchLibrary
         /// <param name="folder">The start search directory.</param>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
-        public FileSearcher(string folder) : this(folder, "*", ExecuteHandlers.InCurrentThread)
+        public FileSearcher(string folder) : this(folder, "*", ExecuteHandlers.InCurrentTask)
         {
         }
 
@@ -108,7 +108,7 @@ namespace FastSearchLibrary
         /// </summary>
         /// <param name="folder">The start search directory.</param>
         /// <param name="isValid">The delegate that determines algorithm of file selection.</param>
-        /// <param name="handlerOption">Determines where execute event handlers.</param>
+        /// <param name="handlerOption">Specifies where FilesFound event handlers are executed.</param>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         public FileSearcher(string folder, Func<FileInfo, bool> isValid, ExecuteHandlers handlerOption)
@@ -129,7 +129,7 @@ namespace FastSearchLibrary
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         public FileSearcher(string folder, Func<FileInfo, bool> isValid)
-            : this(folder, isValid, ExecuteHandlers.InCurrentThread)
+            : this(folder, isValid, ExecuteHandlers.InCurrentTask)
         {
         }
 
@@ -144,7 +144,7 @@ namespace FastSearchLibrary
         /// <param name="folder">The start search directory.</param>
         /// <param name="pattern">The search pattern.</param>
         /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
-        /// <param name="handlerOption">Determines where execute event handlers.</param>
+        /// <param name="handlerOption">Specifies where FilesFound event handlers are executed.</param>
         /// <param name="suppressOperationCanceledException">Determines whether necessary suppress OperationCanceledException if it possible.</param>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
@@ -167,7 +167,7 @@ namespace FastSearchLibrary
         /// <param name="folder">The start search directory.</param>
         /// <param name="pattern">The search pattern.</param>
         /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
-        /// <param name="handlerOption">Determines where execute event handlers.</param>
+        /// <param name="handlerOption">Specifies where FilesFound event handlers are executed.</param>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         public FileSearcher(string folder, string pattern, CancellationTokenSource tokenSource, ExecuteHandlers handlerOption)
@@ -185,7 +185,7 @@ namespace FastSearchLibrary
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         public FileSearcher(string folder, string pattern, CancellationTokenSource tokenSource) 
-            : this(folder, pattern, tokenSource, ExecuteHandlers.InCurrentThread, true)
+            : this(folder, pattern, tokenSource, ExecuteHandlers.InCurrentTask, true)
         {
         }
 
@@ -198,7 +198,7 @@ namespace FastSearchLibrary
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         public FileSearcher(string folder, CancellationTokenSource tokenSource) 
-            : this(folder, "*", tokenSource, ExecuteHandlers.InCurrentThread, true)
+            : this(folder, "*", tokenSource, ExecuteHandlers.InCurrentTask, true)
         {
         }
 
@@ -213,7 +213,7 @@ namespace FastSearchLibrary
         /// <param name="folder">The start search directory.</param>
         /// <param name="isValid">The delegate that determines algorithm of file selection.</param>
         /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
-        /// <param name="handlerOption">Determines where execute event handlers.</param>
+        /// <param name="handlerOption">Specifies where FilesFound event handlers are executed.</param>
         /// <param name="suppressOperationCanceledException">Determines whether necessary suppress OperationCanceledException if it possible.</param>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
@@ -236,7 +236,7 @@ namespace FastSearchLibrary
         /// <param name="folder">The start search directory.</param>
         /// <param name="isValid">The delegate that determines algorithm of file selection.</param>
         /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
-        /// <param name="handlerOption">Determines where execute event handlers.</param>
+        /// <param name="handlerOption">Specifies where FilesFound event handlers are executed.</param>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         public FileSearcher(string folder, Func<FileInfo, bool> isValid, CancellationTokenSource tokenSource, ExecuteHandlers handlerOption)
@@ -254,7 +254,7 @@ namespace FastSearchLibrary
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         public FileSearcher(string folder, Func<FileInfo, bool> isValid, CancellationTokenSource tokenSource)
-            : this(folder, isValid, tokenSource, ExecuteHandlers.InCurrentThread, true)
+            : this(folder, isValid, tokenSource, ExecuteHandlers.InCurrentTask, true)
         {
         }
 
@@ -315,7 +315,7 @@ namespace FastSearchLibrary
 
 
         /// <summary>
-        /// Starts a file search operation with realtime reporting using several threads in thread pool as an asyncchronous operation.
+        /// Starts a file search operation with realtime reporting using several threads in thread pool as an asynchronous operation.
         /// </summary>
         public Task StartSearchAsync()
         {

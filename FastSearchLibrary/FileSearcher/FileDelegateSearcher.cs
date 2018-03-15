@@ -18,12 +18,12 @@ namespace FastSearchLibrary
         }
 
 
-        public FileDelegateSearcher(string folder, Func<FileInfo, bool> isValid): this(folder, isValid, ExecuteHandlers.InCurrentThread)
+        public FileDelegateSearcher(string folder, Func<FileInfo, bool> isValid): this(folder, isValid, ExecuteHandlers.InCurrentTask)
         {
         }
 
 
-        public FileDelegateSearcher(string folder): this(folder, (arg) => true, ExecuteHandlers.InCurrentThread)
+        public FileDelegateSearcher(string folder): this(folder, (arg) => true, ExecuteHandlers.InCurrentTask)
         {
         }
 

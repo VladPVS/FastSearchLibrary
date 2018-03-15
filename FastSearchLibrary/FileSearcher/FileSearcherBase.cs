@@ -55,7 +55,7 @@ namespace FastSearchLibrary
 
         protected virtual void OnFilesFound(List<FileInfo> files)
         {
-            if (handlerOption == ExecuteHandlers.InThreadPool)
+            if (handlerOption == ExecuteHandlers.InNewTask)
                 taskHandlers.Add(Task.Run(() => CallFilesFound(files)));
             else
                 CallFilesFound(files);
@@ -78,7 +78,7 @@ namespace FastSearchLibrary
 
         protected virtual void OnSearchCompleted(bool isCanceled)
         {
-            if (handlerOption == ExecuteHandlers.InThreadPool)
+            if (handlerOption == ExecuteHandlers.InNewTask)
             {
                  Task.WaitAll(taskHandlers.ToArray());   
             }

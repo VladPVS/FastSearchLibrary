@@ -48,7 +48,7 @@ namespace FastSearchLibrary
             {
                 var arg = new DirectoryEventArgs(directories);
 
-                if (handlerOption == ExecuteHandlers.InThreadPool)
+                if (handlerOption == ExecuteHandlers.InNewTask)
                     taskHandlers.Add(Task.Run(() => DirectoriesFound(this, arg), token));
                 else
                     DirectoriesFound(this, arg);
@@ -62,7 +62,7 @@ namespace FastSearchLibrary
 
             if (handler != null)
             {
-                if (handlerOption == ExecuteHandlers.InThreadPool)
+                if (handlerOption == ExecuteHandlers.InNewTask)
                 {
                     try
                     {
@@ -105,7 +105,7 @@ namespace FastSearchLibrary
                 return;
             }
 
-            OnSearchCompleted(false); // isCanceled == true
+            OnSearchCompleted(false);
         }
 
 

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace FastSearchLibrary
 {
     /// <summary>
-    /// Represents a class for fast directory searching.
+    /// Represents a class for fast directory search.
     /// </summary>
     public class DirectorySearcher
     {
@@ -23,7 +23,7 @@ namespace FastSearchLibrary
 
 
         /// <summary>
-        /// Event fires when next portion of files is found. Event handlers is not thread safe. 
+        /// Event fires when next portion of directories is found. Event handlers is not thread safe. 
         /// </summary>
         public event EventHandler<DirectoryEventArgs> DirectoriesFound
         {
@@ -64,7 +64,7 @@ namespace FastSearchLibrary
         /// <param name="folder">The start search directory.</param>
         /// <param name="pattern">The search pattern.</param>
         /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
-        /// <param name="handlerOption">Determines where execute event handlers.</param>
+        /// <param name="handlerOption">Specifies where DirectoriesFound event handlers are executed.</param>
         /// <param name="suppressOperationCanceledException">Determines whether necessary suppress OperationCanceledException if it possible.</param>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
@@ -87,7 +87,7 @@ namespace FastSearchLibrary
         /// <param name="folder">The start search directory.</param>
         /// <param name="pattern">The search pattern.</param>
         /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
-        /// <param name="handlerOption">Determines where execute event handlers.</param>
+        /// <param name="handlerOption">Specifies where DirectoriesFound event handlers are executed.</param>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         public DirectorySearcher(string folder, string pattern, CancellationTokenSource tokenSource, ExecuteHandlers handlerOption)
@@ -105,7 +105,7 @@ namespace FastSearchLibrary
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         public DirectorySearcher(string folder, string pattern, CancellationTokenSource tokenSource)
-            : this (folder, pattern, tokenSource, ExecuteHandlers.InCurrentThread, true)
+            : this (folder, pattern, tokenSource, ExecuteHandlers.InCurrentTask, true)
         {
         }
 
@@ -118,7 +118,7 @@ namespace FastSearchLibrary
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         public DirectorySearcher(string folder, CancellationTokenSource tokenSource)
-            : this (folder, "*", tokenSource, ExecuteHandlers.InCurrentThread, true)
+            : this (folder, "*", tokenSource, ExecuteHandlers.InCurrentTask, true)
         {
 
         }
@@ -134,7 +134,7 @@ namespace FastSearchLibrary
         /// <param name="folder">The start search directory.</param>
         /// <param name="isValid">The delegate that determines algorithm of directory selection.</param>
         /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
-        /// <param name="handlerOption">Determines where execute event handlers.</param>
+        /// <param name="handlerOption">Specifies where DirectoriesFound event handlers are executed.</param>
         /// <param name="suppressOperationCanceledException">Determines whether necessary suppress OperationCanceledException if it possible.</param>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
@@ -157,11 +157,11 @@ namespace FastSearchLibrary
         /// <param name="folder">The start search directory.</param>
         /// <param name="isValid">The delegate that determines algorithm of directory selection.</param>
         /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
-        /// <param name="handlerOption">Determines where execute event handlers.</param>
+        /// <param name="handlerOption">Specifies where DirectoriesFound event handlers are executed.</param>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         public DirectorySearcher(string folder, Func<DirectoryInfo, bool> isValid, CancellationTokenSource tokenSource, ExecuteHandlers handlerOption)
-            : this(folder, isValid, tokenSource, ExecuteHandlers.InCurrentThread, true)
+            : this(folder, isValid, tokenSource, ExecuteHandlers.InCurrentTask, true)
         {
         }
 
@@ -175,7 +175,7 @@ namespace FastSearchLibrary
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         public DirectorySearcher(string folder, Func<DirectoryInfo, bool> isValid, CancellationTokenSource tokenSource)
-            : this(folder, isValid, tokenSource, ExecuteHandlers.InCurrentThread, true)
+            : this(folder, isValid, tokenSource, ExecuteHandlers.InCurrentTask, true)
         {
         }
 
@@ -287,7 +287,7 @@ namespace FastSearchLibrary
         /// Returns a list of directories that are contained in directory and all subdirectories.
         /// </summary>
         /// <param name="folder">The start search directory.</param>
-        /// <param name="pattern">The search pattern.</param>
+        /// <param name="isValid">The delegate that determines algorithm of directory selection.</param>
         /// <returns>List of finding directories.</returns>
         /// <exception cref="DirectoryNotFoundException"></exception>
         /// <exception cref="ArgumentNullException"></exception>

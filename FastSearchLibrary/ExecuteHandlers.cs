@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 namespace FastSearchLibrary
 {
     /// <summary>
-    /// Determines where event handlers execute.
+    /// Specifies where event handlers are executed.
     /// </summary>
     public enum ExecuteHandlers
     {
         /// <summary>
-        /// To execute event handlers in current thread. 
+        /// To execute event handlers in current task. 
         /// </summary>
-        InCurrentThread = 0,
+        InCurrentTask = 0,
 
         /// <summary>
-        /// To execute event handlers in some thread from thread pool.
+        /// To execute event handlers in new task.
         /// </summary>
-        InThreadPool = 1
+        InNewTask = 1
     }
 }

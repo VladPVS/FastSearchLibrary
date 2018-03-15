@@ -20,12 +20,12 @@ namespace FastSearchLibrary
         }
         
 
-        public FilePatternSearcher(string folder, string pattern): this(folder, pattern, ExecuteHandlers.InCurrentThread)
+        public FilePatternSearcher(string folder, string pattern): this(folder, pattern, ExecuteHandlers.InCurrentTask)
         {
         }
 
 
-        public FilePatternSearcher(string folder): this(folder, "*", ExecuteHandlers.InCurrentThread)
+        public FilePatternSearcher(string folder): this(folder, "*", ExecuteHandlers.InCurrentTask)
         {
         }
 
