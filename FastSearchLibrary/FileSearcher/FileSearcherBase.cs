@@ -11,7 +11,7 @@ namespace FastSearchLibrary
     internal abstract class FileSearcherBase
     {
         /// <summary>
-        /// Determines where execute FilesFound event handlers.
+        /// Specifies where FilesFound event handlers are executed.
         /// </summary>
         protected ExecuteHandlers handlerOption { get; set; }
 

@@ -56,7 +56,7 @@ namespace FastSearchLibrary
         }
 
 
-        #region DirectoryCancellationPaternSearcher constructors
+        #region DirectoryCancellationPatternSearcher constructors
 
         /// <summary>
         /// Initialize a new instance of DirectorySearch class. 
@@ -250,10 +250,9 @@ namespace FastSearchLibrary
         /// <summary>
         /// Stops a directory search operation.
         /// </summary>
-        /// <exception cref="OperationCanceledException"></exception>
         public void StopSearch()
         {
-            this.tokenSource.Cancel();
+            tokenSource.Cancel();
         }
 
         #endregion

@@ -46,6 +46,7 @@
     <Compile Include="DirectorySearcher\DirectoryCancellationSearcherBase.cs" />
     <Compile Include="DirectorySearcher\DirectoryEventArgs.cs" />
     <Compile Include="DirectorySearcher\DirectorySearcher.cs" />
+    <Compile Include="DirectorySearcher\DirectorySearcherMultiple.cs" />
     <Compile Include="ExecuteHandlers.cs" />
     <Compile Include="FileSearcher\FileCancellationDelegateSearcher.cs" />
     <Compile Include="FileSearcher\FileCancellationPatternSearcher.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="FileSearcher\FilePatternSearcher.cs" />
     <Compile Include="FileSearcher\FileSearcher.cs" />
     <Compile Include="FileSearcher\FileSearcherBase.cs" />
+    <Compile Include="FileSearcher\FileSearcherMultiple.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchEventArgs.cs" />
   </ItemGroup>

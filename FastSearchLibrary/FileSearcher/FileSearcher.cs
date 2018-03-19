@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -341,10 +340,10 @@ namespace FastSearchLibrary
         /// <exception cref="InvalidOperationException"></exception>
         public void StopSearch()
         {
-            if (this.tokenSource == null)
+            if (tokenSource == null)
                 throw new InvalidOperationException("Impossible to stop operation without instance of CancellationTokenSource.");
 
-            this.tokenSource.Cancel();
+            tokenSource.Cancel();
         }
 
         #endregion

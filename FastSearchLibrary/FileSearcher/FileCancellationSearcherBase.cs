@@ -39,7 +39,7 @@ namespace FastSearchLibrary
                 return;
             }
 
-            OnSearchCompleted(false); // isCanceled == true
+            OnSearchCompleted(false); 
         }
 
 
