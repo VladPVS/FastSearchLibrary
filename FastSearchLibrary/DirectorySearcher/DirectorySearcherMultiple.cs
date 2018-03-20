@@ -128,47 +128,127 @@ namespace FastSearchLibrary
             #endregion
 
 
+            #region DirectoryCancellationPatternSearcher constructors
+
+            /// <summary>
+            /// Initialize a new instance of DirectorySearchMultiple class. 
+            /// </summary>
+            /// <param name="folders">Start search directories.</param>
+            /// <param name="pattern">The search pattern.</param>
+            /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
+            /// <param name="handlerOption">Specifies where DirectoriesFound event handlers are executed.</param>
+            /// <param name="suppressOperationCanceledException">Determines whether necessary suppress OperationCanceledException if it possible.</param>
+            /// <exception cref="ArgumentException"></exception>
+            /// <exception cref="ArgumentNullException"></exception>
+            public DirectorySearcherMultiple(List<string> folders, string pattern, CancellationTokenSource tokenSource, ExecuteHandlers handlerOption, bool suppressOperationCanceledException)
+            {
+
+                foreach (var folder in folders)
+                    CheckFolder(folder);
+
+                CheckPattern(pattern);
+
+                CheckTokenSource(tokenSource);
+
+                searchers = new List<DirectoryCancellationSearcherBase>();
+
+                this.suppressOperationCanceledException = suppressOperationCanceledException;
+
+                foreach (var folder in folders)
+                {
+                    searchers.Add(new DirectoryCancellationPatternSearcher(folder, pattern, tokenSource.Token, handlerOption, false));
+                }
+
+                this.tokenSource = tokenSource;
+            }
+
+
+            /// <summary>
+            /// Initialize a new instance of DirectorySearchMultiple class. 
+            /// </summary>
+            /// <param name="folders">Start search directories.</param>
+            /// <param name="pattern">The search pattern.</param>
+            /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
+            /// <param name="handlerOption">Specifies where DirectoriesFound event handlers are executed.</param>
+            /// <exception cref="ArgumentException"></exception>
+            /// <exception cref="ArgumentNullException"></exception>
+            public DirectorySearcherMultiple(List<string> folders, string pattern, CancellationTokenSource tokenSource, ExecuteHandlers handlerOption)
+                : this (folders, pattern, tokenSource, handlerOption, true)
+            {
+            }
+
+
+            /// <summary>
+            /// Initialize a new instance of DirectorySearchMultiple class. 
+            /// </summary>
+            /// <param name="folders">Start search directories.</param>
+            /// <param name="pattern">The search pattern.</param>
+            /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
+            /// <exception cref="ArgumentException"></exception>
+            /// <exception cref="ArgumentNullException"></exception>
+            public DirectorySearcherMultiple(List<string> folders, string pattern, CancellationTokenSource tokenSource)
+                : this (folders, pattern, tokenSource, ExecuteHandlers.InCurrentTask, true)
+            {
+            }
+
+
+            /// <summary>
+            /// Initialize a new instance of DirectorySearchMultiple class. 
+            /// </summary>
+            /// <param name="folders">Start search directories.</param>
+            /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
+            /// <exception cref="ArgumentException"></exception>
+            /// <exception cref="ArgumentNullException"></exception>
+            public DirectorySearcherMultiple(List<string> folders, CancellationTokenSource tokenSource)
+                : this (folders, "*", tokenSource, ExecuteHandlers.InCurrentTask, true)
+            {
+
+            }
+
+            #endregion
+
+
             #region Checking methods
 
             private void CheckFolder(string folder)
-            {
-                if (folder == null)
-                    throw new ArgumentNullException("Argument \"folder\" is null.");
+                {
+                    if (folder == null)
+                        throw new ArgumentNullException("Argument \"folder\" is null.");
 
-                if (folder == String.Empty)
-                    throw new ArgumentException("Argument \"folder\" is not valid.");
+                    if (folder == String.Empty)
+                        throw new ArgumentException("Argument \"folder\" is not valid.");
 
-                DirectoryInfo dir = new DirectoryInfo(folder);
+                    DirectoryInfo dir = new DirectoryInfo(folder);
 
-                if (!dir.Exists)
-                    throw new ArgumentException("Argument \"folder\" does not represent an existing directory.");
-            }
-
-
-            private void CheckPattern(string pattern)
-            {
-                if (pattern == null)
-                    throw new ArgumentNullException("Argument \"pattern\" is null.");
-
-                if (pattern == String.Empty)
-                    throw new ArgumentException("Argument \"pattern\" is not valid.");
-            }
+                    if (!dir.Exists)
+                        throw new ArgumentException("Argument \"folder\" does not represent an existing directory.");
+                }
 
 
-            private void CheckDelegate(Func<DirectoryInfo, bool> isValid)
-            {
-                if (isValid == null)
-                    throw new ArgumentNullException("Argument \"isValid\" is null.");
-            }
+                private void CheckPattern(string pattern)
+                {
+                    if (pattern == null)
+                        throw new ArgumentNullException("Argument \"pattern\" is null.");
+
+                    if (pattern == String.Empty)
+                        throw new ArgumentException("Argument \"pattern\" is not valid.");
+                }
 
 
-            private void CheckTokenSource(CancellationTokenSource tokenSource)
-            {
-                if (tokenSource == null)
-                    throw new ArgumentNullException("Argument \"tokenSource\" is null.");
-            }
+                private void CheckDelegate(Func<DirectoryInfo, bool> isValid)
+                {
+                    if (isValid == null)
+                        throw new ArgumentNullException("Argument \"isValid\" is null.");
+                }
 
-        #endregion
+
+                private void CheckTokenSource(CancellationTokenSource tokenSource)
+                {
+                    if (tokenSource == null)
+                        throw new ArgumentNullException("Argument \"tokenSource\" is null.");
+                }
+
+            #endregion
 
 
             /// <summary>

@@ -19,7 +19,7 @@ namespace FastSearchLibrary
         /// <summary>
         /// Initialize a new instance of SearchCompletedEventArgs class that describes a SearchCompleted event.
         /// </summary>
-        /// <param name="isCanceled"></param>
+        /// <param name="isCanceled">Determines whether search process canceled.</param>
         public SearchCompletedEventArgs(bool isCanceled)
         {
             IsCanceled = isCanceled;

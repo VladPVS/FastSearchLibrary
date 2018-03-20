@@ -126,6 +126,85 @@ namespace FastSearchLibrary
         #endregion
 
 
+        #region FileCancellationPatternSearcher constructors
+
+        /// <summary>
+        /// Initializes a new instance of FileSearcherMultiple class.
+        /// </summary>
+        /// <param name="folders">Start search directories.</param>
+        /// <param name="pattern">The search pattern.</param>
+        /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
+        /// <param name="handlerOption">Specifies where FilesFound event handlers are executed.</param>
+        /// <param name="suppressOperationCanceledException">Determines whether necessary suppress OperationCanceledException if it possible.</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        public FileSearcherMultiple(List<string> folders, string pattern, CancellationTokenSource tokenSource, ExecuteHandlers handlerOption, bool suppressOperationCanceledException)
+        {
+
+            foreach (var folder in folders)
+                CheckFolder(folder);
+
+            CheckPattern(pattern);
+
+            CheckTokenSource(tokenSource);
+
+            searchers = new List<FileSearcherBase>();
+
+            this.suppressOperationCanceledException = suppressOperationCanceledException;
+
+            foreach (var folder in folders)
+            {
+                searchers.Add(new FileCancellationPatternSearcher(folder, pattern, tokenSource.Token, handlerOption, false));
+            }
+
+            this.tokenSource = tokenSource;
+        }
+
+
+        /// <summary>
+        /// Initializes a new instance of FileSearcherMultiple class.
+        /// </summary>
+        /// <param name="folders">Start search directories.</param>
+        /// <param name="pattern">The search pattern.</param>
+        /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
+        /// <param name="handlerOption">Specifies where FilesFound event handlers are executed.</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        public FileSearcherMultiple(List<string> folders, string pattern, CancellationTokenSource tokenSource, ExecuteHandlers handlerOption)
+            : this(folders, pattern, tokenSource, handlerOption, true)
+        {
+        }
+
+
+        /// <summary>
+        /// Initializes a new instance of FileSearcherMultiple class.
+        /// </summary>
+        /// <param name="folders">Start search directories.</param>
+        /// <param name="pattern">The search pattern.</param>
+        /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        public FileSearcherMultiple(List<string> folders, string pattern, CancellationTokenSource tokenSource) 
+            : this(folders, pattern, tokenSource, ExecuteHandlers.InCurrentTask, true)
+        {
+        }
+
+
+        /// <summary>
+        /// Initializes a new instance of FileSearcherMultiple class.
+        /// </summary>
+        /// <param name="folders">Start search directories.</param>
+        /// <param name="tokenSource">Instance of CancellationTokenSource for search process cancellation possibility.</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        public FileSearcherMultiple(List<string> folders, CancellationTokenSource tokenSource) 
+            : this(folders, "*", tokenSource, ExecuteHandlers.InCurrentTask, true)
+        {
+        }
+
+        #endregion
+
+
         #region Checking methods
 
         private void CheckFolder(string folder)
