@@ -9,7 +9,7 @@ namespace FastSearchLibrary
     /// <summary>
     /// Provides data for SearchCompleted event.
     /// </summary>
-    public class SearchCompletedEventArgs
+    public class SearchCompletedEventArgs : EventArgs
     {
         /// <summary>
         /// Gets whether this search process has completed due cancellation.

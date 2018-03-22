@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FastSearchLibrary
 {
-    class DirectoryCancellationPatternSearcher : DirectoryCancellationSearcherBase
+    internal class DirectoryCancellationPatternSearcher : DirectoryCancellationSearcherBase
     {
 
         private string pattern;

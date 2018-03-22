@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FastSearchLibrary
 {
-    class DirectoryCancellationDelegateSearcher : DirectoryCancellationSearcherBase
+    internal class DirectoryCancellationDelegateSearcher : DirectoryCancellationSearcherBase
     {
 
         private Func<DirectoryInfo, bool> isValid;
