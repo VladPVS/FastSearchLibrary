@@ -25,7 +25,7 @@ Next classes provide search functionality:
   * Methods that have "Fast" ending divide task on several 
   subtasks that executes simultaneously in thread pool.
   * Methods that have "Async" ending return Task and don't block the called thread.
-  * First group of methods accept 2 parameters: 
+  * First group of methods accepts 2 parameters: 
     * `string folder` - start search directory
     * `string pattern` - the search string to match against the names of files in path.
     This parameter can contain a combination of valid literal path and wildcard (* and ?)
