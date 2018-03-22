@@ -196,6 +196,6 @@ Next classes provide search functionality:
 
 ### SPEED OF WORK
 It depends on your computer performance, current loading, but usually `Fast` methods and instance method `StartSearch()` are
-performed at least in 2 times faster then simple one-thread recursive algorithm if you use modern multicore processor of course.    
+performed at least in 2 times faster than simple one-thread recursive algorithm if you use modern multicore processor of course.    
    
 
