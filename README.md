@@ -4,7 +4,7 @@ The multithreading .NET library that provides opportunity to fast find files or 
 
 ## INSTALLATION
 1. Download archive with last [release](https://github.com/VladPVS/FastSearchLibrary/releases "Last release")
-2. Extract content from some directoty.
+2. Extract content from some directory.
 3. Copy files .dll and .xml files in directory of your project.
 4. Add library to your project: Solution Explorer -> Reference -> item AddReference in contex menu -> Browse
 5. Add appropriate namespace: `using FastSearchLibrary;`
@@ -78,7 +78,7 @@ Next classes provide search functionality:
      `StopSearch()` method. 
     To stop search process possibility one have to use constructor that accept CancellationTokenSource parameter.
     
-    Example:
+   Example:
     
     class Searcher
     {
