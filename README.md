@@ -23,7 +23,7 @@ Next classes provide search functionality:
   * Classes `FilesSearcher` and `DirectorySearcher` contain static method that allow execute search by different criteria.
   These methods return result only when they fully complete execution.
   * Methods that have "Fast" ending divide task on several 
-  subtasks that executes simultaneously in thread pool.
+  subtasks that execute simultaneously in thread pool.
   * Methods that have "Async" ending return Task and don't block the called thread.
   * First group of methods accepts 2 parameters: 
     * `string folder` - start search directory
