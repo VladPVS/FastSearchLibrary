@@ -4,8 +4,8 @@ The multithreading .NET library that provides opportunity to fast find files or 
 
 ## INSTALLATION
 1. Download archive with last [release](https://github.com/VladPVS/FastSearchLibrary/releases "Last release")
-2. Extract content from some directoty.
-3. Copy files .dll and .xml files in directory of your project.
+2. Extract content from some directory.
+3. Copy .dll and .xml files in directory of your project.
 4. Add library to your project: Solution Explorer -> Reference -> item AddReference in contex menu -> Browse
 5. Add appropriate namespace: `using FastSearchLibrary;`
 6. Set target .NET Framework version as 4.5.1 or higher: Project -> <YourProjectName> Properties -> Target framework
@@ -23,7 +23,7 @@ Next classes provide search functionality:
   * Classes `FilesSearcher` and `DirectorySearcher` contain static method that allow execute search by different criteria.
   These methods return result only when they fully complete execution.
   * Methods that have "Fast" ending divide task on several 
-  subtasks that executes simultaneously in thread pool.
+  subtasks that execute simultaneously in thread pool.
   * Methods that have "Async" ending return Task and don't block the called thread.
   * First group of methods accepts 2 parameters: 
     * `string folder` - start search directory
@@ -78,7 +78,7 @@ Next classes provide search functionality:
      `StopSearch()` method. 
     To stop search process possibility one have to use constructor that accept CancellationTokenSource parameter.
     
-    Example:
+   Example:
     
     class Searcher
     {
@@ -196,6 +196,6 @@ Next classes provide search functionality:
 
 ### SPEED OF WORK
 It depends on your computer performance, current loading, but usually `Fast` methods and instance method `StartSearch()` are
-performed at least in 2 times faster then simple one-thread recursive algorithm if you use modern multicore processor of course.    
+performed at least in 2 times faster than simple one-thread recursive algorithm if you use modern multicore processor of course.    
    
 
