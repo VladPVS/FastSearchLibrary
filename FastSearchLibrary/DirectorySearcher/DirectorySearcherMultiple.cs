@@ -211,42 +211,42 @@ namespace FastSearchLibrary
             #region Checking methods
 
             private void CheckFolder(string folder)
-                {
-                    if (folder == null)
-                        throw new ArgumentNullException("Argument \"folder\" is null.");
+            {
+                if (folder == null)
+                    throw new ArgumentNullException(nameof(folder), "Argument is null.");
 
-                    if (folder == String.Empty)
-                        throw new ArgumentException("Argument \"folder\" is not valid.");
+                if (folder == String.Empty)
+                    throw new ArgumentException("Argument is not valid.", nameof(folder));
 
-                    DirectoryInfo dir = new DirectoryInfo(folder);
+                DirectoryInfo dir = new DirectoryInfo(folder);
 
-                    if (!dir.Exists)
-                        throw new ArgumentException("Argument \"folder\" does not represent an existing directory.");
-                }
-
-
-                private void CheckPattern(string pattern)
-                {
-                    if (pattern == null)
-                        throw new ArgumentNullException("Argument \"pattern\" is null.");
-
-                    if (pattern == String.Empty)
-                        throw new ArgumentException("Argument \"pattern\" is not valid.");
-                }
+                if (!dir.Exists)
+                    throw new ArgumentException("Argument does not represent an existing directory.", nameof(folder));
+            }
 
 
-                private void CheckDelegate(Func<DirectoryInfo, bool> isValid)
-                {
-                    if (isValid == null)
-                        throw new ArgumentNullException("Argument \"isValid\" is null.");
-                }
+            private void CheckPattern(string pattern)
+            {
+                if (pattern == null)
+                    throw new ArgumentNullException(nameof(pattern), "Argument is null.");
+
+                if (pattern == String.Empty)
+                    throw new ArgumentException("Argument is not valid.", nameof(pattern));
+            }
 
 
-                private void CheckTokenSource(CancellationTokenSource tokenSource)
-                {
-                    if (tokenSource == null)
-                        throw new ArgumentNullException("Argument \"tokenSource\" is null.");
-                }
+            private void CheckDelegate(Func<DirectoryInfo, bool> isValid)
+            {
+                if (isValid == null)
+                    throw new ArgumentNullException(nameof(isValid), "Argument is null.");
+            }
+
+
+            private void CheckTokenSource(CancellationTokenSource tokenSource)
+            {
+                if (tokenSource == null)
+                    throw new ArgumentNullException(nameof(tokenSource), "Argument is null.");
+            }
 
             #endregion
 
