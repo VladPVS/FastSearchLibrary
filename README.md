@@ -194,8 +194,116 @@ Next classes provide search functionality:
       return false;
     }, tokenSource, ExecuteHandlers.InCurrentTask, true);       
 
+   ### NOTE
+   It is highly recommend to use "await" keyword when you use any asynchronous method. It allows to get possible
+   exceptions from method for following processing, that is demonstrated next code example. Error processing in previous 
+   examples had been missed for simplicity.
+
+  Example:
+
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Text.RegularExpressions;
+    using System.Threading;
+    using FastSearchLibrary;
+
+    namespace SearchWithAwait
+    {
+        class Program
+        {
+           private static object locker = new object();
+
+           private static List<FileInfo> files;
+
+           private static Stopwatch stopWatch;
+
+
+           static void Main(string[] args)
+           {
+              string searchPattern = @"\.mp4$";
+
+              StartSearch(searchPattern);
+
+              Console.ReadKey(true);
+           }
+
+
+           private static async void StartSearch(string pattern)
+           {
+              stopWatch = new Stopwatch();
+
+              stopWatch.Start();
+
+              Console.WriteLine("Search had been started.\n");
+
+              files = new List<FileInfo>();
+
+              List<string> searchDirectories = new List<string>
+              {
+                   @"C:\",
+                   @"D:\"
+              }; 
+
+              FileSearcherMultiple searcher = new FileSearcherMultiple(searchDirectories, (f) =>
+              {
+                  return Regex.IsMatch(f.Name, pattern);
+              }, new CancellationTokenSource());
+
+              searcher.FilesFound += Searcher_FilesFound;
+              searcher.SearchCompleted += Searcher_SearchCompleted;
+
+              try
+              {
+                 await searcher.StartSearchAsync();
+              }
+              catch (AggregateException ex)
+              {
+                 Console.WriteLine($"Error ocurred: {ex.InnerException.Message}");
+              }
+              catch (Exception ex)
+              {
+                 Console.WriteLine($"Error ocurred: {ex.Message}");
+              }
+              finally
+              {
+                 Console.Write("\nPress any key to continue...");
+              }
+           } 
+
+
+           private static void Searcher_FilesFound(object sender, FileEventArgs arg)
+           {
+              lock (locker) // using a lock is obligatorily
+              {
+                 arg.Files.ForEach((f) =>
+                 {
+                    files.Add(f); // add the next part of the received files to the results list
+                    Console.WriteLine($"File location: {f.FullName}\nCreation.Time: {f.CreationTime}\n");
+                 });
+              }
+           }
+
+
+           private static void Searcher_SearchCompleted(object sender, SearchCompletedEventArgs arg)
+           {
+              stopWatch.Stop();
+
+              if (arg.IsCanceled) // check whether StopSearch() called
+                Console.WriteLine("Search stopped.");
+              else
+                Console.WriteLine("Search completed.");
+
+              Console.WriteLine($"Quantity of files: {files.Count}"); // show amount of finding files
+
+              Console.WriteLine($"Spent time: {stopWatch.Elapsed.Minutes} min {stopWatch.Elapsed.Seconds} s {stopWatch.Elapsed.Milliseconds} ms");
+           }
+        }
+    }
+
 ### SPEED OF WORK
 It depends on your computer performance, current loading, but usually `Fast` methods and instance method `StartSearch()` are
-performed at least in 2 times faster than simple one-thread recursive algorithm if you use modern multicore processor of course.    
+performed at least in 2 times faster than simple one-thread recursive algorithm if you use modern multicore processor of course.
    
 
