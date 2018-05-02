@@ -1,6 +1,9 @@
 # FastSearchLibrary
 The multithreading .NET library that provides opportunity to fast find files or directories using different search criteria.
+
+[The MIF](https://github.com/VladPVS/The-MIF "The MIF search tool") file search tool is based on this library. You can [try](https://github.com/VladPVS/The-MIF/releases "Download The MIF") it right now.
 #### Works really fast. Check it yourself!
+![Downloads](https://img.shields.io/github/downloads/VladPVS/FastSearchLibrary/total.svg)
 
 ## INSTALLATION
 1. Download archive with last [release](https://github.com/VladPVS/FastSearchLibrary/releases "Last release")
