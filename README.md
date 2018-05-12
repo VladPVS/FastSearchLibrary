@@ -40,13 +40,13 @@ Next classes provide search functionality:
    Finds all `*.txt` files in `C:\Users` using one thread method.
    
     List<FileInfo> files = FileSearcher.GetFilesFast(@"C:\Users", "*SomePattern*.txt");
-   Finds all files that match appropriate pattern using several thread in thread pool.
+   Finds all files that match appropriate pattern using several threads in thread pool.
    
     Task<List<FileInfo>> task = FileSearcher.GetFilesFastAsync(@"C:\", "a?.txt");
-   Finds all files that match appropriate pattern using several thread in thread pool as
+   Finds all files that match appropriate pattern using several threads in thread pool as
    an asynchronous operation.
    
-   * Second group of methods accept 2 parameters:
+   * Second group of methods accepts 2 parameters:
      * `string folder` - start search directory
      * `Func<FileInfo, bool> isValid` - delegate that determines algorithm of file selection.
      
@@ -57,7 +57,7 @@ Next classes provide search functionality:
          return (f.Name.Contains("Pattern") || f.Name.Contains("Pattern2")) &&
                  f.LastAccessTime >= new DateTime(2018, 3, 1) && f.Length > 1073741824;
     });
-   Finds all files that match appropriate conditions using several thread in thread pool as
+   Finds all files that match appropriate conditions using several threads in thread pool as
    an asynchronous operation.
    
    You also can use regular expressions:
@@ -77,9 +77,9 @@ Next classes provide search functionality:
    * `event EventHandler<FileEventArgs> FilesFound` - fires when next portion of files is found.
      Event includes `List<FileInfo> Files { get; }` property that contains list of finding files.
    * `event EventHandler<SearchCompleted> SearchCompleted` - fires when search process is completed or stopped. 
-     Event includes `bool IsCanceled { get; }` property that contains value that defines whether search procees stopped by calling
+     Event includes `bool IsCanceled { get; }` property that contains value that defines whether search process stopped by calling
      `StopSearch()` method. 
-    To stop search process possibility one have to use constructor that accept CancellationTokenSource parameter.
+    To stop search process possibility one have to use constructor that accepts CancellationTokenSource parameter.
     
    Example:
     
@@ -96,7 +96,7 @@ Next classes provide search functionality:
             files = new List<FileInfo>(); // create list that will contain search result
         }
 
-        public void Startsearch()
+        public void StartSearch()
         {
             CancellationTokenSource tokenSource = new CancellationTokenSource();
             // create tokenSource to get stop search process possibility
