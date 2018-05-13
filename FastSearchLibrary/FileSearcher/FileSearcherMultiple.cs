@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -74,9 +72,8 @@ namespace FastSearchLibrary
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         public FileSearcherMultiple(List<string> folders, Func<FileInfo, bool> isValid, CancellationTokenSource tokenSource, ExecuteHandlers handlerOption, bool suppressOperationCanceledException)
-        { 
-            foreach (var folder in folders)
-                CheckFolder(folder);
+        {
+            CheckFolders(folders);
 
             CheckDelegate(isValid);
 
@@ -140,9 +137,7 @@ namespace FastSearchLibrary
         /// <exception cref="ArgumentNullException"></exception>
         public FileSearcherMultiple(List<string> folders, string pattern, CancellationTokenSource tokenSource, ExecuteHandlers handlerOption, bool suppressOperationCanceledException)
         {
-
-            foreach (var folder in folders)
-                CheckFolder(folder);
+            CheckFolders(folders);
 
             CheckPattern(pattern);
 
@@ -206,6 +201,18 @@ namespace FastSearchLibrary
 
 
         #region Checking methods
+        private void CheckFolders(List<string> folders)
+        {
+            if (folders == null)
+                throw new ArgumentNullException(nameof(folders), "Argument is null.");
+
+            if (folders.Count == 0)
+                throw new ArgumentException("Argument is an empty list.", nameof(folders));
+
+            foreach (var folder in folders)
+                CheckFolder(folder);
+        }
+
 
         private void CheckFolder(string folder)
         {
