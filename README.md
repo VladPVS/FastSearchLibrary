@@ -263,11 +263,11 @@ Next classes provide search functionality:
               }
               catch (AggregateException ex)
               {
-                 Console.WriteLine($"Error ocurred: {ex.InnerException.Message}");
+                 Console.WriteLine($"Error occurred: {ex.InnerException.Message}");
               }
               catch (Exception ex)
               {
-                 Console.WriteLine($"Error ocurred: {ex.Message}");
+                 Console.WriteLine($"Error occurred: {ex.Message}");
               }
               finally
               {
