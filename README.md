@@ -1,7 +1,7 @@
 # FastSearchLibrary
 The multithreading .NET library that provides opportunity to fast find files or directories using different search criteria.
 
-[The MIF](https://github.com/VladPVS/The-MIF "The MIF search tool") file search tool is based on this library. You can [try](https://github.com/VladPVS/The-MIF/releases "Download The MIF") it right now.
+[The MIF](https://github.com/VladPVS/The-MIF "The MIF search tool") file search tool is based on this library. You can [try](https://github.com/VladPVS/The-MIF/releases "Download The MIF") it if you want to estimate speed of work right now.
 #### Works really fast. Check it yourself!
 ![Downloads](https://img.shields.io/github/downloads/VladPVS/FastSearchLibrary/total.svg)
 
@@ -23,7 +23,7 @@ Next classes provide search functionality:
 
 ## USE PRINCIPLES
 ### Basic opportunities
-  * Classes `FilesSearcher` and `DirectorySearcher` contain static method that allow execute search by different criteria.
+  * Classes `FilesSearcher` and `DirectorySearcher` contain static methods that allow to execute search by different criteria.
   These methods return result only when they fully complete execution.
   * Methods that have "Fast" ending divide task on several 
   subtasks that execute simultaneously in thread pool.
@@ -79,7 +79,7 @@ Next classes provide search functionality:
    * `event EventHandler<SearchCompleted> SearchCompleted` - fires when search process is completed or stopped. 
      Event includes `bool IsCanceled { get; }` property that contains value that defines whether search process stopped by calling
      `StopSearch()` method. 
-    To stop search process possibility one have to use constructor that accepts CancellationTokenSource parameter.
+    To get stop search process possibility one have to use constructor that accepts CancellationTokenSource parameter.
     
    Example:
     
@@ -140,7 +140,7 @@ Next classes provide search functionality:
  `lock` keyword as you can see in example above or use thread safe collection from `System.Collections.Concurrent` namespace.
  
  ### Extended opportunities
-   FileSearcher class includes 2 additional parameters: `handlerOption`, `suppressOperationCanceledException`.
+   There are 2 additional parameters that one can set. These are `handlerOption` and `suppressOperationCanceledException`.
    `ExecuteHandlers handlerOption` parameter represents instance of `ExecuteHandlers` enumeration that specifies where
    FilesFound event handlers are executed:  
    * `InCurrentTask` value means that `FileFound` event handlers will be executed in that task where files were found. 
@@ -150,9 +150,9 @@ Next classes provide search functionality:
     
    `bool suppressOperationCanceledException` parameter determines whether necessary to suppress 
    OperationCanceledException.
-   If `suppressOperationCanceledException` parameter has value `false` and StopSearch() method calls the `OperationCanceledException` 
+   If `suppressOperationCanceledException` parameter has value `false` and StopSearch() method is called the `OperationCanceledException` 
    will be thrown. In this case you have to process the exception manually.
-   If `suppressOperationCanceledException` parameter has value `true` and StopSearch() method calls the `OperationCanceledException` 
+   If `suppressOperationCanceledException` parameter has value `true` and StopSearch() method is called the `OperationCanceledException` 
    is processed automatically and you don't need to catch it. 
    Default value is `true`.
    
