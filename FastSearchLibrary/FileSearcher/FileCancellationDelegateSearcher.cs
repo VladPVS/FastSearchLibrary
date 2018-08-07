@@ -50,10 +50,11 @@ namespace FastSearchLibrary
             {
                 return;
             }
-            catch (PathTooLongException ex)
+            catch (DirectoryNotFoundException ex)
             {
                 return;
             }
+
 
             foreach (var d in directories)
             {
@@ -78,7 +79,7 @@ namespace FastSearchLibrary
             catch (UnauthorizedAccessException ex)
             {
             }
-            catch (PathTooLongException ex)
+            catch (DirectoryNotFoundException ex)
             {
             }
 
@@ -119,7 +120,7 @@ namespace FastSearchLibrary
             {
                 return new List<DirectoryInfo>();
             }
-            catch (PathTooLongException ex)
+            catch (DirectoryNotFoundException ex)
             {
                 return new List<DirectoryInfo>();
             }
