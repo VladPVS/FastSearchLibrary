@@ -312,4 +312,4 @@ performed at least in 2 times faster than simple one-thread recursive algorithm 
 
 ### CONCLUSION
 
-If you are satisfied with this library and have excess money you don't know how to spend I ready to accept part of them. All gratitude I receive here: 4731185608965072 It is my bank account in dollars. 
+If you are satisfied with this library and have excess money you don't know how to spend I ready to accept part of them. It is my bank account in dollars where I receive all gratefulnesses: `4731185608965072` 
