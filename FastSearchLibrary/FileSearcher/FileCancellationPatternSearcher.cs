@@ -44,6 +44,10 @@ namespace FastSearchLibrary
             {
                 return;
             }
+            catch (PathTooLongException ex)
+            {
+                return;
+            }
             catch (DirectoryNotFoundException ex)
             {
                 return;
@@ -65,6 +69,9 @@ namespace FastSearchLibrary
                     OnFilesFound(resFiles.ToList());
             }
             catch (UnauthorizedAccessException ex)
+            {
+            }
+            catch (PathTooLongException ex)
             {
             }
             catch (DirectoryNotFoundException ex)
@@ -96,6 +103,10 @@ namespace FastSearchLibrary
                     return new List<DirectoryInfo>();
             }
             catch (UnauthorizedAccessException ex)
+            {
+                return new List<DirectoryInfo>();
+            }
+            catch (PathTooLongException ex)
             {
                 return new List<DirectoryInfo>();
             }

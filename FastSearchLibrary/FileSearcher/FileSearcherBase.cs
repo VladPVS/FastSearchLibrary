@@ -15,9 +15,7 @@ namespace FastSearchLibrary
         /// </summary>
         protected ExecuteHandlers handlerOption { get; set; }
 
-
         protected string folder;
-
 
         protected ConcurrentBag<Task> taskHandlers;
 
@@ -33,7 +31,6 @@ namespace FastSearchLibrary
         public event EventHandler<FileEventArgs> FilesFound;
 
         public event EventHandler<SearchCompletedEventArgs> SearchCompleted;
-
 
 
         protected virtual void GetFilesFast()
@@ -52,7 +49,6 @@ namespace FastSearchLibrary
         }
 
 
-
         protected virtual void OnFilesFound(List<FileInfo> files)
         {
             if (handlerOption == ExecuteHandlers.InNewTask)
@@ -60,7 +56,6 @@ namespace FastSearchLibrary
             else
                 CallFilesFound(files);
         }
-
 
 
         protected virtual void CallFilesFound(List<FileInfo> files)
@@ -73,7 +68,6 @@ namespace FastSearchLibrary
                 handler(this, arg);
             }
         }
-
 
 
         protected virtual void OnSearchCompleted(bool isCanceled)
@@ -103,9 +97,7 @@ namespace FastSearchLibrary
         protected abstract void GetFiles(string folder);
 
 
-
         protected abstract List<DirectoryInfo> GetStartDirectories(string folder);
-
 
 
         public abstract void StartSearch();

@@ -284,7 +284,7 @@ namespace FastSearchLibrary
 
 
             /// <summary>
-            /// Starts a directory search operation with realtime reporting using several threads in thread pool as an asyncchronous operation.
+            /// Starts a directory search operation with realtime reporting using several threads in thread pool as an asynchronous operation.
             /// </summary>
             public Task StartSearchAsync()
             {

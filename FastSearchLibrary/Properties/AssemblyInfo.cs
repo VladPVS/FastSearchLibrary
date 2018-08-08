@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("FastSearchLibrary")]
-[assembly: AssemblyDescription("Multithreading library for fast file and directory search.")]
+[assembly: AssemblyDescription("Multithreading library for fast file and directory search")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("FastSearchLibrary")]
 [assembly: AssemblyCopyright("Copyright © VladPVS  2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("VladPVS")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.7.1")]
-[assembly: AssemblyFileVersion("1.1.7.1")]
+[assembly: AssemblyVersion("1.1.7.2")]
+[assembly: AssemblyFileVersion("1.1.7.2")]

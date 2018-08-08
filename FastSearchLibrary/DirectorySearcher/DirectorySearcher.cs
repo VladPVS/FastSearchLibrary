@@ -236,7 +236,7 @@ namespace FastSearchLibrary
 
 
         /// <summary>
-        /// Starts a directory search operation with realtime reporting using several threads in thread pool as an asyncchronous operation.
+        /// Starts a directory search operation with realtime reporting using several threads in thread pool as an asynchronous operation.
         /// </summary>
         public Task StartSearchAsync()
         {
@@ -455,6 +455,10 @@ namespace FastSearchLibrary
             {
                 return;
             }
+            catch (PathTooLongException ex)
+            {
+                return;
+            }
             catch (DirectoryNotFoundException ex)
             {
                 return;
@@ -492,6 +496,10 @@ namespace FastSearchLibrary
             {
                 return;
             }
+            catch (PathTooLongException ex)
+            {
+                return;
+            }
             catch (DirectoryNotFoundException ex)
             {
                 return;
@@ -508,6 +516,9 @@ namespace FastSearchLibrary
                 });
             }
             catch (UnauthorizedAccessException ex)
+            {
+            }
+            catch (PathTooLongException ex)
             {
             }
             catch (DirectoryNotFoundException ex)
@@ -537,6 +548,10 @@ namespace FastSearchLibrary
 
             }
             catch (UnauthorizedAccessException ex)
+            {
+                return new List<DirectoryInfo>();
+            }
+            catch (PathTooLongException ex)
             {
                 return new List<DirectoryInfo>();
             }
@@ -578,6 +593,10 @@ namespace FastSearchLibrary
 
             }
             catch (UnauthorizedAccessException ex)
+            {
+                return new List<DirectoryInfo>();
+            }
+            catch (PathTooLongException ex)
             {
                 return new List<DirectoryInfo>();
             }
