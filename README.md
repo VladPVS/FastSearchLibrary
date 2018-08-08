@@ -11,7 +11,8 @@ The multithreading .NET library that provides opportunity to fast find files or 
 3. Copy .dll and .xml files in directory of your project.
 4. Add library to your project: Solution Explorer -> Reference -> item AddReference in contex menu -> Browse
 5. Add appropriate namespace: `using FastSearchLibrary;`
-6. Set target .NET Framework version at least as 4.5.1 if you use v1.1.6.1 of library or 4.6.2 if you use at least v1.1.7.2: Project -> <YourProjectName> Properties -> Target framework
+6. Set target .NET Framework version at least as 4.5.1 if you use v1.1.6.1 of library or 4.6.2 if you use at least v1.1.7.2:
+Project -> <YourProjectName> Properties -> Target framework
 
 ## CONTENT
 
@@ -308,5 +309,7 @@ Next classes provide search functionality:
 ### SPEED OF WORK
 It depends on your computer performance, current loading, but usually `Fast` methods and instance method `StartSearch()` are
 performed at least in 2 times faster than simple one-thread recursive algorithm if you use modern multicore processor of course.
-   
 
+### CONCLUSION
+
+If you are satisfied with this library and have excess money you don't know how to spend I ready to accept part of them. All gratitude I receive here: 4731185608965072 It is my bank account in dollars. 
