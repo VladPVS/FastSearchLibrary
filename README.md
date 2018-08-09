@@ -23,7 +23,7 @@ Next classes provide search functionality:
 
 ## USE PRINCIPLES
 ### Basic opportunities
-  * Classes `FilesSearcher` and `DirectorySearcher` contain static methods that allow to execute search by different criteria.
+  * Classes `FileSearcher` and `DirectorySearcher` contain static methods that allow to execute search by different criteria.
   These methods return result only when they fully complete execution.
   * Methods that have "Fast" ending divide task on several 
   subtasks that execute simultaneously in thread pool.
