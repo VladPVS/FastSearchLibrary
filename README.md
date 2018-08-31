@@ -319,7 +319,3 @@ Select `<Project name>` in Solution explorer, click right button of mouse -> `Ad
 ### SPEED OF WORK
 It depends on your computer performance, current loading, but usually `Fast` methods and instance method `StartSearch()` are
 performed at least in 2 times faster than simple one-thread recursive algorithm if you use modern multicore processor of course.
-
-### CONCLUSION
-
-If you are satisfied with this library and have excess money you don't know how to spend I'm ready to accept part of them. It is my bank account in dollars where I receive all gratefulnesses: `4731185608965072` 
