@@ -79,7 +79,7 @@ Next classes provide search functionality:
    * `event EventHandler<SearchCompleted> SearchCompleted` - fires when search process is completed or stopped. 
      Event includes `bool IsCanceled { get; }` property that contains value that defines whether search process stopped by calling
      `StopSearch()` method. 
-    To get stop search process possibility one have to use constructor that accepts CancellationTokenSource parameter.
+    To get stop search process possibility one has to use constructor that accepts CancellationTokenSource parameter.
     
    Example:
     
@@ -189,12 +189,15 @@ Next classes provide search functionality:
 
     FileSearcherMultiple multipleSearcher = new FileSearcherMultiple(folders, (f) =>
     {
-      if (f.CreationTime >= new DateTime(2015, 3, 15) &&
-         (f.Extension == ".cs" || f.Extension == ".sln"))
-        foreach (var keyword in keywords)
-          if (f.Name.Contains(keyword))
-            return true;
-      return false;
+       if (f.CreationTime >= new DateTime(2015, 3, 15) &&
+          (f.Extension == ".cs" || f.Extension == ".sln"))
+          {
+             foreach (var keyword in keywords)
+               if (f.Name.Contains(keyword))
+                 return true;
+          }
+          
+       return false;
     }, tokenSource, ExecuteHandlers.InCurrentTask, true);       
 
    ### NOTES
