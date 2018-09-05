@@ -5,6 +5,13 @@ The multithreading .NET library that provides opportunity to fast find files or 
 #### Works really fast. Check it yourself!
 ![Downloads](https://img.shields.io/github/downloads/VladPVS/FastSearchLibrary/total.svg)
 
+## ADVANTAGES
+* Library uses recursive search algorithm that is splitted on subtasks executing in thread pool
+* **UnauthorizedAccessException** is never thrown while search is executed
+* It's possible to choose different search criteria
+* It's possible to stop search process when it is necessary
+* It's possible to set different search paths at the same time
+
 ## INSTALLATION
 1. Download archive with last [release](https://github.com/VladPVS/FastSearchLibrary/releases "Last release") if you use .NET 4.6.2 or higher otherwise download v1.1.6.1
 2. Extract content to some directory.
