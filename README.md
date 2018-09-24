@@ -5,13 +5,20 @@ The multithreading .NET library that provides opportunity to fast find files or 
 #### Works really fast. Check it yourself!
 ![Downloads](https://img.shields.io/github/downloads/VladPVS/FastSearchLibrary/total.svg)
 
+## ADVANTAGES
+* Library uses recursive search algorithm that is splitted on subtasks executing in thread pool
+* **UnauthorizedAccessException** is never thrown while search is executed
+* It's possible to choose different search criteria
+* It's possible to stop search process when it is necessary
+* It's possible to set different search paths at the same time
+
 ## INSTALLATION
-1. Download archive with last [release](https://github.com/VladPVS/FastSearchLibrary/releases "Last release")
-2. Extract content from some directory.
+1. Download archive with last [release](https://github.com/VladPVS/FastSearchLibrary/releases "Last release") if you use .NET 4.6.2 or higher otherwise download v1.1.6.1
+2. Extract content to some directory.
 3. Copy .dll and .xml files in directory of your project.
 4. Add library to your project: Solution Explorer -> Reference -> item AddReference in contex menu -> Browse
 5. Add appropriate namespace: `using FastSearchLibrary;`
-6. Set target .NET Framework version as 4.5.1 or higher: Project -> <YourProjectName> Properties -> Target framework
+6. Set target .NET version at least as `4.5.1` if you use v1.1.6.1 of library or `4.6.2` if you use at least v1.1.7.2: Project -> <YourProjectName> Properties -> Target framework
 
 ## CONTENT
 
@@ -23,7 +30,7 @@ Next classes provide search functionality:
 
 ## USE PRINCIPLES
 ### Basic opportunities
-  * Classes `FilesSearcher` and `DirectorySearcher` contain static methods that allow to execute search by different criteria.
+  * Classes `FileSearcher` and `DirectorySearcher` contain static methods that allow to execute search by different criteria.
   These methods return result only when they fully complete execution.
   * Methods that have "Fast" ending divide task on several 
   subtasks that execute simultaneously in thread pool.
@@ -79,7 +86,7 @@ Next classes provide search functionality:
    * `event EventHandler<SearchCompleted> SearchCompleted` - fires when search process is completed or stopped. 
      Event includes `bool IsCanceled { get; }` property that contains value that defines whether search process stopped by calling
      `StopSearch()` method. 
-    To get stop search process possibility one have to use constructor that accepts CancellationTokenSource parameter.
+    To get stop search process possibility one has to use constructor that accepts CancellationTokenSource parameter.
     
    Example:
     
@@ -189,15 +196,19 @@ Next classes provide search functionality:
 
     FileSearcherMultiple multipleSearcher = new FileSearcherMultiple(folders, (f) =>
     {
-      if (f.CreationTime >= new DateTime(2015, 3, 15) &&
-         (f.Extension == ".cs" || f.Extension == ".sln"))
-        foreach (var keyword in keywords)
-          if (f.Name.Contains(keyword))
-            return true;
-      return false;
+       if (f.CreationTime >= new DateTime(2015, 3, 15) &&
+          (f.Extension == ".cs" || f.Extension == ".sln"))
+          {
+             foreach (var keyword in keywords)
+               if (f.Name.Contains(keyword))
+                 return true;
+          }
+          
+       return false;
     }, tokenSource, ExecuteHandlers.InCurrentTask, true);       
 
-   ### NOTE
+   ### NOTES
+   #### Using "await" keyword
    It is highly recommend to use "await" keyword when you use any asynchronous method. It allows to get possible
    exceptions from method for following processing, that is demonstrated next code example. Error processing in previous 
    examples had been missed for simplicity.
@@ -304,9 +315,17 @@ Next classes provide search functionality:
            }
         }
     }
-
+#### Long paths Windows limitation
+There is a 260 symbols Windows limitation on full name of files. In common case library will ignore such "long" paths. But if you want to circumvent this limitation you should follow next steps:
+1. Use Windows 10 (assembly 1607 or higher).
+2. Download the last [release](https://github.com/VladPVS/FastSearchLibrary/releases "Last release") of this library.
+3. Use Visual Studio 2017.
+4. Set the version of .NET Framework at least 4.6.2
+5. Add the manifest file to your project. 
+Select `<Project name>` in Solution explorer, click right button of mouse -> `Add` -> `New item` -> `Application manifest file`. Then add content of [this](https://github.com/VladPVS/FastSearchLibrary/files/2267462/manifest.txt) file to the manifest before the last closed tag.
+6. A registry key allows to enable or disable the new long path behavior in Windows.  To enable long path behavior open registry editor and follow next path `HKLM\SYSTEM\CurrentControlSet\Control\FileSystem` Then create parameter `LongPathsEnabled` (type REG_DWORD) with `1` value.
+7. Reboot your computer.
+    
 ### SPEED OF WORK
 It depends on your computer performance, current loading, but usually `Fast` methods and instance method `StartSearch()` are
 performed at least in 2 times faster than simple one-thread recursive algorithm if you use modern multicore processor of course.
-   
-
