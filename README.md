@@ -174,7 +174,7 @@ Next classes provide search functionality:
     
    ### MULTIPLE SEARCH
    `FileSearcher` and `DirectorySearcher` classes can search only in one directory (and in all subdirectories surely) 
-   but what if you want to perform search in several directories at same time?     
+   but what if you want to perform search in several directories at the same time?     
    Of course, you can create some instances of `FileSearcher` (or `DirectorySearcher`) class and launch them simultaneously, 
    but `FilesFound` (or `DirectoriesFound`) events will occur for each instance you create. As a rule, it's inconveniently.
    Classes `FileSearcherMultiple` and `DirectorySearcherMultiple` are intended to solve this problem. 
