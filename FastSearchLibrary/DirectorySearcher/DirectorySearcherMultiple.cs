@@ -21,7 +21,7 @@ namespace FastSearchLibrary
 
 
             /// <summary>
-            /// Event fires when next portion of directories is found. Event handlers is not thread safe. 
+            /// Event fires when next portion of directories is found. Event handlers are not thread safe. 
             /// </summary>
             public event EventHandler<DirectoryEventArgs> DirectoriesFound
             {
@@ -38,7 +38,7 @@ namespace FastSearchLibrary
 
 
             /// <summary>
-            /// Event fires when search process is completed or stopped. Event handlers is not thread safe.
+            /// Event fires when search process is completed or stopped.
             /// </summary>
             public event EventHandler<SearchCompletedEventArgs> SearchCompleted;
 
@@ -55,7 +55,7 @@ namespace FastSearchLibrary
                 {
                     var arg = new SearchCompletedEventArgs(isCanceled);
 
-                    SearchCompleted(this, arg);
+                    handler(this, arg);
                 }
             }
 

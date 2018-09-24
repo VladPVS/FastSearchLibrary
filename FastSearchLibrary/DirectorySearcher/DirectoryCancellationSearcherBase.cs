@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -34,10 +33,10 @@ namespace FastSearchLibrary
             taskHandlers = new ConcurrentBag<Task>();
         }
 
+
         public event EventHandler<DirectoryEventArgs> DirectoriesFound;
 
         public event EventHandler<SearchCompletedEventArgs> SearchCompleted;
-
 
 
         protected virtual void OnDirectoriesFound(List<DirectoryInfo> directories)
@@ -51,7 +50,7 @@ namespace FastSearchLibrary
                 if (handlerOption == ExecuteHandlers.InNewTask)
                     taskHandlers.Add(Task.Run(() => DirectoriesFound(this, arg), token));
                 else
-                    DirectoriesFound(this, arg);
+                    handler(this, arg);
             }
         }
 
@@ -80,7 +79,7 @@ namespace FastSearchLibrary
 
                 var arg = new SearchCompletedEventArgs(isCanceled);
 
-                SearchCompleted(this, arg);
+                handler(this, arg);
             }
         }
 
@@ -122,7 +121,6 @@ namespace FastSearchLibrary
                 });
             });
         }
-
 
 
         protected abstract void GetDirectories(string folder);

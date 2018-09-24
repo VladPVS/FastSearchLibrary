@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace FastSearchLibrary
 {
@@ -55,7 +53,6 @@ namespace FastSearchLibrary
                 GetDirectories(d.FullName);
             }
 
-            //Array.ForEach(directories, (d) => GetDirectories(d.FullName));
 
             token.ThrowIfCancellationRequested();
 

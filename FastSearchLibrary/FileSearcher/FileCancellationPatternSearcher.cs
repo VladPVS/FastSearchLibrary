@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace FastSearchLibrary
 {
@@ -37,6 +35,7 @@ namespace FastSearchLibrary
                     var resFiles = dirInfo.GetFiles(pattern);
                     if (resFiles.Length > 0)
                         OnFilesFound(resFiles.ToList());
+
                     return;
                 }
             }

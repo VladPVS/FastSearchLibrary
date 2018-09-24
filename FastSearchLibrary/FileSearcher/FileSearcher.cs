@@ -21,7 +21,7 @@ namespace FastSearchLibrary
         private CancellationTokenSource tokenSource;
 
         /// <summary>
-        /// Event fires when next portion of files is found. Event handlers is not thread safe. 
+        /// Event fires when next portion of files is found. Event handlers are not thread safe. 
         /// </summary>
         public event EventHandler<FileEventArgs> FilesFound
         {
@@ -38,7 +38,7 @@ namespace FastSearchLibrary
 
 
         /// <summary>
-        /// Event fires when search process is completed or stopped. Event handlers is not thread safe.
+        /// Event fires when search process is completed or stopped. 
         /// </summary>
         public event EventHandler<SearchCompletedEventArgs> SearchCompleted
         {
@@ -54,7 +54,7 @@ namespace FastSearchLibrary
         }
 
 
-        #region FilePatternSearcher conctructors 
+        #region FilePatternSearcher constructors 
 
         /// <summary>
         /// Initializes a new instance of FileSearcher class.

@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FastSearchLibrary
@@ -52,9 +51,13 @@ namespace FastSearchLibrary
         protected virtual void OnFilesFound(List<FileInfo> files)
         {
             if (handlerOption == ExecuteHandlers.InNewTask)
+            {
                 taskHandlers.Add(Task.Run(() => CallFilesFound(files)));
+            }
             else
+            {
                 CallFilesFound(files);
+            }
         }
 
 
@@ -89,7 +92,7 @@ namespace FastSearchLibrary
             {
                 var arg = new SearchCompletedEventArgs(isCanceled);
 
-                SearchCompleted(this, arg);
+                handler(this, arg);
             }
         }
 
