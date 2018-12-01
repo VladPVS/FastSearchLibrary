@@ -16,7 +16,7 @@ The multithreading .NET library that provides opportunity to fast find files or 
 1. Download archive with last [release](https://github.com/VladPVS/FastSearchLibrary/releases "Last release") if you use .NET 4.6.2 or higher otherwise download v1.1.6.1
 2. Extract content to some directory.
 3. Copy .dll and .xml files in directory of your project.
-4. Add library to your project: Solution Explorer -> Reference -> item AddReference in contex menu -> Browse
+4. Add library to your project: Solution Explorer -> Reference -> item AddReference in context menu -> Browse
 5. Add appropriate namespace: `using FastSearchLibrary;`
 6. Set target .NET version at least as `4.5.1` if you use v1.1.6.1 of library or `4.6.2` if you use at least v1.1.7.2: Project -> <YourProjectName> Properties -> Target framework
 
