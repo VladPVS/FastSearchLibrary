@@ -71,7 +71,7 @@ Next classes provide search functionality:
     
     Task<List<FileInfo>> task = FileSearcher.GetFilesFastAsync(@"D:\", (f) =>
     {
-         return (f) => Regex.IsMatch(f.Name, @".*Imagine[\s_-]Dragons.*.mp3$");
+         return Regex.IsMatch(f.Name, @".*Imagine[\s_-]Dragons.*.mp3$");
     }); 
     
    Finds all files that match appropriate regular expression using several thread in thread pool as
@@ -179,7 +179,7 @@ Next classes provide search functionality:
    but `FilesFound` (or `DirectoriesFound`) events will occur for each instance you create. As a rule, it's inconveniently.
    Classes `FileSearcherMultiple` and `DirectorySearcherMultiple` are intended to solve this problem. 
    They are similar to `FileSearcher` and `DirectorySearcher` but can execute search in several directories.
-   The difference between `FileSearcher` and `FileSearcheMultiple` is that constructor of `Multiple` class accepts list of 
+   The difference between `FileSearcher` and `FileSearcherMultiple` is that constructor of `Multiple` class accepts list of 
    directories instead one directory.
    
    Example:
@@ -319,11 +319,11 @@ Next classes provide search functionality:
 There is a 260 symbols Windows limitation on full name of files. In common case library will ignore such "long" paths. But if you want to circumvent this limitation you should follow next steps:
 1. Use Windows 10 (assembly 1607 or higher).
 2. Download the last [release](https://github.com/VladPVS/FastSearchLibrary/releases "Last release") of this library.
-3. Use Visual Studio 2017.
+3. Use Visual Studio 2017 or newer.
 4. Set the version of .NET Framework at least 4.6.2
 5. Add the manifest file to your project. 
 Select `<Project name>` in Solution explorer, click right button of mouse -> `Add` -> `New item` -> `Application manifest file`. Then add content of [this](https://github.com/VladPVS/FastSearchLibrary/files/2267462/manifest.txt) file to the manifest before the last closed tag.
-6. A registry key allows to enable or disable the new long path behavior in Windows.  To enable long path behavior open registry editor and follow next path `HKLM\SYSTEM\CurrentControlSet\Control\FileSystem` Then create parameter `LongPathsEnabled` (type REG_DWORD) with `1` value.
+6. A registry key allows to enable or disable the new long path behavior in Windows. To enable long path behavior open registry editor and follow next path `HKLM\SYSTEM\CurrentControlSet\Control\FileSystem` Then create parameter `LongPathsEnabled` (type REG_DWORD) with `1` value.
 7. Reboot your computer.
     
 ### SPEED OF WORK
