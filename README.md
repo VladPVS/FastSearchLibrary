@@ -1,9 +1,14 @@
 # FastSearchLibrary
 The multithreading .NET library that provides opportunity to fast find files or directories using different search criteria.
 
+.NET Core version is available [here](https://github.com/VladPVS/FastSearchLibraryNetCore ".NET Core version").
+
 [The MIF](https://github.com/VladPVS/The-MIF "The MIF search tool") file search tool is based on this library. You can [try](https://github.com/VladPVS/The-MIF/releases "Download The MIF") it if you want to estimate speed of work right now.
 #### Works really fast. Check it yourself!
 ![Downloads](https://img.shields.io/github/downloads/VladPVS/FastSearchLibrary/total.svg)
+
+### DONATIONS
+All gratefulnesses are accepted [here](https://www.paypal.com/donate/?business=QZ45LV76EWWCE&no_recurring=1&item_name=For+material+equivalent+of+thankfulness&currency_code=USD "PayPal").
 
 ## ADVANTAGES
 * Library uses recursive search algorithm that is splitted on subtasks executing in thread pool
@@ -211,7 +216,7 @@ Next classes provide search functionality:
    #### Using "await" keyword
    It is highly recommend to use "await" keyword when you use any asynchronous method. It allows to get possible
    exceptions from method for following processing, that is demonstrated next code example. Error processing in previous 
-   examples had been missed for simplicity.
+   examples has been skipped for simplicity.
 
   Example:
 
@@ -250,7 +255,7 @@ Next classes provide search functionality:
 
               stopWatch.Start();
 
-              Console.WriteLine("Search had been started.\n");
+              Console.WriteLine("Search has been started.\n");
 
               files = new List<FileInfo>();
 
@@ -289,7 +294,7 @@ Next classes provide search functionality:
 
            private static void Searcher_FilesFound(object sender, FileEventArgs arg)
            {
-              lock (locker) // using a lock is obligatorily
+              lock (locker) // using of the lock is mandatory
               {
                  arg.Files.ForEach((f) =>
                  {
@@ -329,6 +334,3 @@ Select `<Project name>` in Solution explorer, click right button of mouse -> `Ad
 ### SPEED OF WORK
 It depends on your computer performance, current loading, but usually `Fast` methods and instance method `StartSearch()` are
 performed at least in 2 times faster than simple one-thread recursive algorithm if you use modern multicore processor of course.
-
-### CONTRIBUTION
-If this library was really helpful and you have any excess money that you don't know how to spend I am ready to receive part of them. In any case, all thankfulnesses are accepted on PayPal: `putchenko_vs@ukr.net`
