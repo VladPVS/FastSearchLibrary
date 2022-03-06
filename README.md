@@ -47,14 +47,19 @@ Next classes provide search functionality:
     characters, but doesn't support regular expressions.
     
   Examples:
-  
-    List<FileInfo> files = FileSearcher.GetFiles(@"C:\Users", "*.txt");
+````csharp 
+List<FileInfo> files = FileSearcher.GetFiles(@"C:\Users", "*.txt");
+````
    Finds all `*.txt` files in `C:\Users` using one thread method.
-   
-    List<FileInfo> files = FileSearcher.GetFilesFast(@"C:\Users", "*SomePattern*.txt");
+
+````csharp
+List<FileInfo> files = FileSearcher.GetFilesFast(@"C:\Users", "*SomePattern*.txt");
+````
    Finds all files that match appropriate pattern using several threads in thread pool.
-   
-    Task<List<FileInfo>> task = FileSearcher.GetFilesFastAsync(@"C:\", "a?.txt");
+
+````csharp
+Task<List<FileInfo>> task = FileSearcher.GetFilesFastAsync(@"C:\", "a?.txt");
+````
    Finds all files that match appropriate pattern using several threads in thread pool as
    an asynchronous operation.
    
@@ -63,22 +68,22 @@ Next classes provide search functionality:
      * `Func<FileInfo, bool> isValid` - delegate that determines algorithm of file selection.
      
    Examples:
-   
-    Task<List<FileInfo>> task = FileSearcher.GetFilesFastAsync(@"D:\", (f) =>
-    {
-         return (f.Name.Contains("Pattern") || f.Name.Contains("Pattern2")) &&
-                 f.LastAccessTime >= new DateTime(2018, 3, 1) && f.Length > 1073741824;
-    });
+````csharp
+Task<List<FileInfo>> task = FileSearcher.GetFilesFastAsync(@"D:\", (f) =>
+{
+    return (f.Name.Contains("Pattern") || f.Name.Contains("Pattern2")) && f.LastAccessTime >= new DateTime(2018, 3, 1) && f.Length > 1073741824;
+});
+````
    Finds all files that match appropriate conditions using several threads in thread pool as
    an asynchronous operation.
    
    You also can use regular expressions:
-    
-    Task<List<FileInfo>> task = FileSearcher.GetFilesFastAsync(@"D:\", (f) =>
-    {
-         return Regex.IsMatch(f.Name, @".*Imagine[\s_-]Dragons.*.mp3$");
-    }); 
-    
+````csharp    
+Task<List<FileInfo>> task = FileSearcher.GetFilesFastAsync(@"D:\", (f) =>
+{
+     return Regex.IsMatch(f.Name, @".*Imagine[\s_-]Dragons.*.mp3$");
+}); 
+````
    Finds all files that match appropriate regular expression using several thread in thread pool as
    an asynchronous operation.
    
@@ -94,7 +99,7 @@ Next classes provide search functionality:
     To get stop search process possibility one has to use constructor that accepts CancellationTokenSource parameter.
     
    Example:
-    
+  ````csharp    
     class Searcher
     {
         private static object locker = new object(); // locker object
@@ -148,6 +153,7 @@ Next classes provide search functionality:
             // start search process as an asynchronous operation that doesn't block the called thread
         }
     }
+ ````
  Note that all `FilesFound` event handlers are not thread safe so to prevent result loosing one should use
  `lock` keyword as you can see in example above or use thread safe collection from `System.Collections.Concurrent` namespace.
  
@@ -169,14 +175,14 @@ Next classes provide search functionality:
    Default value is `true`.
    
    Example:
-            
+  ````csharp           
     CancellationTokenSource tokenSource = new CancellationTokenSource();
 
     FileSearcher searcher = new FileSearcher(@"D:\Program Files", (f) =>
     {
        return Regex.IsMatch(f.Name, @".{1,5}[Ss]ome[Pp]attern.txt$") && (f.Length >= 8192); // 8192b == 8Kb 
     }, tokenSource, ExecuteHandlers.InNewTask, true); // suppressOperationCanceledException == true
-    
+ ````
    ### MULTIPLE SEARCH
    `FileSearcher` and `DirectorySearcher` classes can search only in one directory (and in all subdirectories surely) 
    but what if you want to perform search in several directories at the same time?     
@@ -188,7 +194,7 @@ Next classes provide search functionality:
    directories instead one directory.
    
    Example:
-   
+ ````csharp
     List<string> folders = new List<string>
     {
       @"C:\Users\Public",
@@ -211,7 +217,7 @@ Next classes provide search functionality:
           
        return false;
     }, tokenSource, ExecuteHandlers.InCurrentTask, true);       
-
+ ````
    ### NOTES
    #### Using "await" keyword
    It is highly recommend to use "await" keyword when you use any asynchronous method. It allows to get possible
@@ -219,7 +225,7 @@ Next classes provide search functionality:
    examples has been skipped for simplicity.
 
   Example:
-
+ ````csharp
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
@@ -320,6 +326,7 @@ Next classes provide search functionality:
            }
         }
     }
+````
 #### Long paths Windows limitation
 There is a 260 symbols Windows limitation on full name of files. In common case library will ignore such "long" paths. But if you want to circumvent this limitation you should follow next steps:
 1. Use Windows 10 (assembly 1607 or higher).
