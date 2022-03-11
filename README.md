@@ -1,3 +1,13 @@
+## Attention!
+
+We have been in state of war with Russia since February 24th.
+To help Ukraine achieve victory as soon as possible, please, ignore all russian products, companies, projects... Everything.
+
+Also you may help Armed Forces of Ukraine here: https://bank.gov.ua/en/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi
+
+We will release our Motherland from russian invaders and save Europe from aggressive inhuman russian regime. I promise.
+#### Glory to Ukraine!
+
 # FastSearchLibrary
 The multithreading .NET library that provides opportunity to fast find files or directories using different search criteria.
 
@@ -6,9 +16,6 @@ The multithreading .NET library that provides opportunity to fast find files or 
 [The MIF](https://github.com/VladPVS/The-MIF "The MIF search tool") file search tool is based on this library. You can [try](https://github.com/VladPVS/The-MIF/releases "Download The MIF") it if you want to estimate speed of work right now.
 #### Works really fast. Check it yourself!
 ![Downloads](https://img.shields.io/github/downloads/VladPVS/FastSearchLibrary/total.svg)
-
-### DONATIONS
-All gratefulnesses are accepted [here](https://www.paypal.com/donate/?business=QZ45LV76EWWCE&no_recurring=1&item_name=For+material+equivalent+of+thankfulness&currency_code=USD "PayPal").
 
 ## ADVANTAGES
 * Library uses recursive search algorithm that is splitted on subtasks executing in thread pool
