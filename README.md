@@ -1,6 +1,6 @@
 ## Attention!
 
-We have been in state of war with Russia since February 24th, 2022.
+We have been at state of war with Russia since February 24th, 2022.
 To help Ukraine achieve victory as soon as possible, please, ignore all Russian products, companies, projects... Everything.
 
 Also you may help Armed Forces of Ukraine here: https://bank.gov.ua/en/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi
