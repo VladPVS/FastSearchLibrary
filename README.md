@@ -113,7 +113,7 @@ Task<List<FileInfo>> task = FileSearcher.GetFilesFastAsync(@"D:\", (f) =>
 
         private FileSearcher searcher;
 
-        List<FileInfo> files;
+        private List<FileInfo> files;
 
         public Searcher()
         {
@@ -133,7 +133,7 @@ Task<List<FileInfo>> task = FileSearcher.GetFilesFastAsync(@"D:\", (f) =>
 
             searcher.FilesFound += (sender, arg) => // subscribe on FilesFound event
             {
-                lock (locker) // using a lock is obligatorily
+                lock (locker) // using a lock is obligatory
                 {
                     arg.Files.ForEach((f) =>
                     {
