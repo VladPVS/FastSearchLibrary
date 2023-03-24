@@ -5,7 +5,7 @@ To help Ukraine achieve victory as soon as possible, please, ignore all Russian 
 
 Also you may help Armed Forces of Ukraine here: https://bank.gov.ua/en/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi
 
-We will release our Motherland from russian invaders and save Europe from aggressive inhuman Russian regime. I promise.
+We will release our Motherland from Russian invaders and save Europe from aggressive inhuman Russian regime. I promise.
 #### Glory to Ukraine!
 
 # FastSearchLibrary
