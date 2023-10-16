@@ -7,6 +7,9 @@ Also you may help Armed Forces of Ukraine here: https://bank.gov.ua/en/news/all/
 
 We will release our Motherland from Russian invaders and save Europe from aggressive inhuman Russian regime. I promise.
 #### Glory to Ukraine!
+___
+
+If you wish to support me personally, it's possible to do here: [https://ko-fi.com/VladPVS](https://ko-fi.com/vladpvs)
 
 # FastSearchLibrary
 The multithreading .NET library that provides opportunity to fast find files or directories using different search criteria.
@@ -347,4 +350,4 @@ Select `<Project name>` in Solution explorer, click right button of mouse -> `Ad
     
 ### SPEED OF WORK
 It depends on your computer performance, current loading, but usually `Fast` methods and instance method `StartSearch()` are
-performed at least in 2 times faster than simple one-thread recursive algorithm if you use modern multicore processor of course.
+performed at least in 2 times faster than simple one-thread recursive algorithm.
